@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio - Estudiantes de Ingeniería de Sistemas</title>
@@ -91,18 +91,25 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        /* ===== Sección Hero ===== */
+                /* ===== Sección Hero ===== */
         .hero {
             margin: 2rem 0;
             color: white;
-            border-radius: 1.25rem;
+            border-radius: 1.25rem; 
             overflow: hidden;
-            background: linear-gradient(hsl(210 90% 20% / .85), hsl(210 90% 20% / .85));
+            background: 
+                linear-gradient(rgba(30, 60, 114, 0.7), rgba(16, 42, 90, 0.75)),
+                url('images/hero.png') center/cover no-repeat;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
         }
         
         .hero-inner {
-            padding: clamp(2rem, 5vw, 4rem);
+            padding: clamp(2.5rem, 6vw, 5rem);
             text-align: center;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
         }
         
         h1 {
