@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Estudiantes de Ingeniería de Sistemas</title>
+    <style>
+        /* ===== Variables y reset ===== */
+        :root {
+            --bg: hsl(210, 30%, 98%);
+            --card: #fff;
+            --text: hsl(222, 15%, 15%);
+            --muted: hsl(222, 10%, 45%);
+            --primary: hsl(210, 90%, 55%);
+            --primary-600: hsl(210, 90%, 45%);
+            --ring: hsl(210, 90%, 55%, 0.35);
+            --border: #e5e7eb;
+            --header-bg: linear-gradient(135deg, #2c3e50, #4a6491);
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: min(1200px, 92%);
+            margin-inline: auto;
+        }
+        
+        /* ===== Header y navegación ===== */
+        header {
+            background: var(--header-bg);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ===== Sección Hero ===== */
+        .hero {
+            margin: 2rem 0;
+            color: white;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            background: linear-gradient(hsl(210 90% 20% / .85), hsl(210 90% 20% / .85));
+        }
+        
+        .hero-inner {
+            padding: clamp(2rem, 5vw, 4rem);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .lead {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* ===== Sección de Perfiles ===== */
+        .profiles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .profile-card {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f1f1f1;
+        }
+        
+        .profile-info h2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        
+        .skill {
+            background: #e4e9f2;
+            padding: 0.5rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .chart {
+            margin: 1.5rem 0;
+        }
+        
+        .chart-bar {
+            height: 28px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-600));
+            margin: 0.75rem 0;
+            border-radius: 0.5rem;
+            color: white;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        /* ===== Sección de Proyectos ===== */
+        .projects-section {
+            margin: 3rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: var(--card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .project-tag {
+            background: #e4e9f2;
+            padding: 0.3rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        /* ===== Formulario ===== */
+        .form-section {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--ring);
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        button:hover {
+            background: var(--primary-600);
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="brand">
+                <div class="logo">SW</div>
+                <span>Estudiantes - Ingeniería de Sistemas</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#perfiles">Perfiles</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <h1>Desarrolladores Full Stack</h1>
+            <p class="lead">Conoce el talento y los proyectos de nuestros futuros ingenieros</p>
+            <p class="lead">Universidad Católica de Córdoba</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Perfiles de Estudiantes -->
+        <section id="perfiles" class="profiles">
+            <!-- Perfil 1 -->
+            <article class="profile-card">
+                <div class="profile-header">
+                    <img src="images/leo.jpg" alt="Leonardo Morabito" class="profile-img">
+                    <div class="profile-info">
+                        <h2>Leonardo Morabito</h2>
+                        <p><strong>Edad:</strong> 23 años</p>
+                        <p><strong>Semestre:</strong> 10no</p>
+                    </div>
+                </div>
+                
+                <p><strong>Intereses:</strong> Inteligencia Artificial, Desarrollo Web, Ciberseguridad</p>
+                
+                <h3>Habilidades Técnicas</h3>
+                <div class="skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">Java</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">SQL</span>
+                    <span class="skill">React</span>
+                </div>
+                
+                <h3>Nivel de Habilidades</h3>
+                <div class="chart">
+                    <div class="chart-bar" style="width: 90%;">Python: 90%</div>
+                    <div class="chart-bar" style="width: 85%;">Java: 85%</div>
+                    <div class="chart-bar" style="width: 80%;">JavaScript: 80%</div>
+                    <div class="chart-bar" style="width: 75%;">Base de Datos: 75%</div>
+                </div>
+            </article>
+            
+            <!-- Perfil 2 -->
+            <article class="profile-card">
+                <div class="profile-header">
+                    <img src="images/miche.jpeg" alt="Victoria Elliott" class="profile-img">
+                    <div class="profile-info">
+                        <h2>Victoria Elliott</h2>
+                        <p><strong>Edad:</strong> 22 años</p>
+                        <p><strong>Semestre:</strong> 10mo</p>
+                    </div>
+                </div>
+                
+                <p><strong>Intereses:</strong> Desarrollo Móvil, Cloud Computing, DevOps</p>
+                
+                <h3>Habilidades Técnicas</h3>
+                <div class="skills">
+                    <span class="skill">Kotlin</span>
+                    <span class="skill">Swift</span>
+                    <span class="skill">Docker</span>
+                    <span class="skill">AWS</span>
+                    <span class="skill">Node.js</span>
+                </div>
+                
+                <h3>Nivel de Habilidades</h3>
+                <div class="chart">
+                    <div class="chart-bar" style="width: 95%;">Desarrollo Móvil: 95%</div>
+                    <div class="chart-bar" style="width: 85%;">Cloud Computing: 85%</div>
+                    <div class="chart-bar" style="width: 80%;">DevOps: 80%</div>
+                    <div class="chart-bar" style="width: 90%;">UI/UX Design: 90%</div>
+                </div>
+            </article>
+        </section>
+        
+        <!-- Proyectos Destacados -->
+        <section id="proyectos" class="projects-section">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            
+            <div class="projects-grid">
+                <!-- Proyecto 1 (Conjunto) -->
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Sistema de Gestión Académica" class="project-img">
+                    <div class="project-content">
+                        <h3>Sistema de Gestión Académica</h3>
+                        <p>Plataforma web para la gestión de calificaciones, horarios y asistencia de estudiantes.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Web App</span>
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">MySQL</span>
+                        </div>
+                        <p><strong>Colaboración:</strong> Leonardo & Victoria</p>
+                    </div>
+                </article>
+                
+                <!-- Proyecto 2 (Carlos) -->
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Asistente Virtual con IA" class="project-img">
+                    <div class="project-content">
+                        <h3>Asistente Virtual con IA</h3>
+                        <p>Asistente virtual capaz de responder preguntas y realizar tareas automatizadas usando Python y NLP.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">IA</span>
+                            <span class="project-tag">NLP</span>
+                        </div>
+                        <p><strong>Desarrollador:</strong> Leonardo Morabito</p>
+                    </div>
+                </article>
+                
+                <!-- Proyecto 3 (María) -->
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="App Móvil de Delivery" class="project-img">
+                    <div class="project-content">
+                        <h3>App Móvil de Delivery</h3>
+                        <p>Aplicación móvil para servicio de delivery con seguimiento en tiempo real y pasarela de pagos.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Kotlin</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">Maps</span>
+                        </div>
+                        <p><strong>Desarrolladora:</strong> Victoria Elliott</p>
+                    </div>
+                </article>
+                
+                <!-- Proyecto 4 (Conjunto) -->
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Analizador de Datos Financieros" class="project-img">
+                    <div class="project-content">
+                        <h3>Analizador de Datos Financieros</h3>
+                        <p>Herramienta de análisis y visualización de datos financieros con predicciones basadas en ML.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Data Science</span>
+                            <span class="project-tag">ML</span>
+                        </div>
+                        <p><strong>Colaboración:</strong> Leonardo & Victoria</p>
+                    </div>
+                </article>
+
+                        <!-- Proyecto 5 (Carlos) -->
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Sistema de Recomendación de Películas" class="project-img">
+                    <div class="project-content">
+                        <h3>Sistema de Recomendación de Películas</h3>
+                        <p>Algoritmo de machine learning que sugiere películas basado en preferencias y calificaciones del usuario.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">ML</span>
+                            <span class="project-tag">Recomendación</span>
+                        </div>
+                        <p><strong>Desarrollador:</strong> Leonardo Morabito</p>
+                    </div>
+                </article>
+
+                <!-- Proyecto 6 (María) -->
+                <article class="project-card">
+                    <img src="https://www.solbyte.com/wp-content/uploads/2024/12/desarrollo-web-a-medida.png" alt="Plataforma de Cursos Online" class="project-img">
+                    <div class="project-content">
+                        <h3>Plataforma de Cursos Online</h3>
+                        <p>Sistema E-learning con videoconferencia integrada, evaluaciones automáticas y panel de administración.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">WebRTC</span>
+                        </div>
+                        <p><strong>Desarrolladora:</strong> Victoria Elliott</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Formulario de contacto -->
+                <!-- Formulario de contacto -->
+        <section id="contacto" class="form-section">
+            <h2 class="section-title">Formulario de Contacto</h2>
+            <p>¿Te interesa contactar con nuestros estudiantes? Completa el siguiente formulario:</p>
+            
+            <form id="contactForm">
+                <!-- Primera fila: Nombre y Email -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez González">
+                        <div class="error" id="nameError">Por favor ingresa tu nombre completo</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required placeholder="Ej: juan.perez@ejemplo.com">
+                        <div class="error" id="emailError">Por favor ingresa un correo electrónico válido</div>
+                    </div>
+                </div>
+                
+                <!-- Segunda fila: Teléfono y Estudiante a contactar -->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="phone">Teléfono (opcional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Ej: +57 300 123 4567">
+                        <div class="error" id="phoneError">Por favor ingresa un número de teléfono válido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student">Estudiante a contactar</label>
+                        <select id="student" name="student" required>
+                            <option value="">Selecciona un estudiante</option>
+                            <option value="carlos">Leonardo Morabito</option>
+                            <option value="maria">Victoria Elliott</option>
+                            <option value="ambos">Ambos estudiantes</option>
+                        </select>
+                        <div class="error" id="studentError">Por favor selecciona un estudiante</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Por favor, describe el motivo de tu contacto o el tipo de colaboración que buscas..."></textarea>
+                    <div class="error" id="messageError">Por favor ingresa un mensaje</div>
+                </div>
+                
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <p>© 2025 Portafolio de Estudiantes de Ingeniería de Sistemas</p>
+            <p>Universidad Católica de Córdoba - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Validación del formulario
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Validar nombre
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('nameError');
+            if (!name.value.trim()) {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Validar email
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            // Validar teléfono si se proporciona
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phoneError');
+            if (phone.value && !/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(phone.value)) {
+                phoneError.style.display = 'block';
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+            }
+            
+            // Validar estudiante seleccionado
+            const student = document.getElementById('student');
+            const studentError = document.getElementById('studentError');
+            if (!student.value) {
+                studentError.style.display = 'block';
+                isValid = false;
+            } else {
+                studentError.style.display = 'none';
+            }
+            
+            // Validar mensaje
+            const message = document.getElementById('message');
+            const messageError = document.getElementById('messageError');
+            if (!message.value.trim()) {
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+            
+            // Si todo es válido, mostrar mensaje de éxito
+            if (isValid) {
+                alert('¡Formulario enviado con éxito! Te contactaremos pronto.');
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>
