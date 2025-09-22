@@ -1,0 +1,13 @@
+/* Reset global */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Arial', sans-serif; }
+
+/* Variables globales */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+}
+
+/* Utilidades globales */
+.container { max-width: 1200px; margin: 0 auto; }
+.btn { padding: 10px 20px; border-radius: 4px; }

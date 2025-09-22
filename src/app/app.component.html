@@ -1,0 +1,15 @@
+<div class="container">
+  <nav class="navbar">
+    <a routerLink="/home" routerLinkActive="active-link" class="nav-link">Home</a>
+    <a routerLink="/profiles" routerLinkActive="active-link" class="nav-link">Profiles</a>
+    <a routerLink="/projects" routerLinkActive="active-link" class="nav-link">Projects</a>
+    <a routerLink="/contact" routerLinkActive="active-link" class="nav-link">Contact</a>
+  </nav>
+  <div class="main-content">
+    <!--
+    [hidden]="item.authRequired && !loginService.isLoggedIn()" in line 9
+    Router outlet allows to display a component depending on the route.
+     This depends on the routes added in the app routes file-->
+    <router-outlet></router-outlet>
+  </div>
+</div>
