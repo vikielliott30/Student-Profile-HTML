@@ -1,10 +1,11 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './form.html',
   styleUrls: ['./form.scss'],
 })
@@ -22,6 +23,8 @@ export class Form {
     subject: '',
     message: '',
   };
+
+  readonly motivos = ['consulta', 'soporte', 'presupuesto'];
 
   form = this.fb.group({
     name: this.fb.control(this.initial.name, [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),

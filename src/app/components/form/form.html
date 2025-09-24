@@ -2,7 +2,7 @@
   <h2 id="titulo-contacto">Formulario de contacto</h2>
 
   @if (sent) {
-    <p class="success" role="status">¡Gracias! Tu mensaje fue enviado.</p>
+    <div class="success" role="status">¡Gracias! Tu mensaje fue enviado.</div>
   }
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
@@ -60,9 +60,9 @@
         [attr.aria-describedby]="fieldInvalid('subject') ? 'err-subject' : null"
       >
         <option value="" disabled>-- Selecciona un motivo --</option>
-        <option value="consulta">Consulta</option>
-        <option value="soporte">Soporte</option>
-        <option value="presupuesto">Presupuesto</option>
+        @for (motivo of motivos; track motivo) {
+          <option [value]="motivo">{{ motivo[0].toUpperCase() + motivo.slice(1) }}</option>
+        }
       </select>
       @if (fieldInvalid('subject')) {
         <div id="err-subject" class="alert alert-error bubble" role="alert" aria-live="assertive">
