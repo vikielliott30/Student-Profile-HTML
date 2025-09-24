@@ -2,15 +2,6 @@
 
 import { Component } from '@angular/core';
 
-// Asegúrate de que este tipo Project esté en el mismo archivo
-type Project = {
-  title: string;
-  img: string;
-  cssClass: string;
-  tags: string[];
-  developer: string;
-};
-
 @Component({
   selector: 'app-curriculum',
   standalone: true,
@@ -20,8 +11,9 @@ type Project = {
 export class Curriculum {
   
   Student1 = {
-    name: 'Leonardo Carmelo Morabito',
-    avatar : 'assets/image/leo.jpg',
+    name: 'Leonardo Morabito',
+    // Ruta corregida: de 'image' a 'images'
+    avatar : '../../assets/images/leo.jpg', 
     role: 'Estudiante de Ingeniería en Sistemas',
     email: 'leonardomorabito02@gmail.com',
     tel: '+54 9 351 394 1076',
@@ -30,13 +22,11 @@ export class Curriculum {
 
   Student2 = {
     name: 'Victoria Elliott',
-    avatar: 'assets/images/miche.jpeg',
+    // Esta ruta ya estaba correcta
+    avatar: '../../assets/images/miche.jpeg',
     role: 'Estudiante de Ingeniería en Sistemas',
-    email: 'vikielliot30@gmail.com',
-    tel: '+54 9 351 394 1076',
-    github: 'vikielliot30',
+    email: 'vikielliott30@gmail.com',
+    tel: '+54 9 3521 43-9947',
+    github: 'vikielliott30',
   };
-
-  // Datos completos para cada proyecto, incluyendo tags y developer
-  
 }

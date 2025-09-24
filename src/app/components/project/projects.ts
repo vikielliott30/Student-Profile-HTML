@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 // Definición de la interfaz del proyecto para garantizar el tipado
 interface Project {
   title: string;
-  img: string;
+  description: string;
   cssClass: string;
   tags: string[];
   developer: string;
@@ -23,34 +23,34 @@ export class ProjectsPageComponent {
   projectsStudent1: Project[] = [
     {
       title: 'Sistema de Gestión de Hoteles',
-      img: 'assets/images/project-1.jpg',
       cssClass: 'gestion-hoteles',
       tags: ['Angular', 'Node.js', 'MongoDB'],
       developer: 'Leonardo Morabito',
+      description: 'Una aplicación para gestionar reservas y habitaciones de un hotel.'
     },
     {
       title: 'Plataforma E-commerce',
-      img: 'assets/images/project-2.jpg',
       cssClass: 'ecommerce',
       tags: ['React', 'Express', 'PostgreSQL'],
       developer: 'Leonardo Morabito',
+      description: 'Una plataforma completa para la venta de productos en línea.'
     },
   ];
 
   projectsStudent2: Project[] = [
     {
       title: 'Aplicación de Bienestar',
-      img: 'assets/images/project-3.jpg',
       cssClass: 'bienestar',
       tags: ['React Native', 'Firebase'],
       developer: 'Victoria Elliott',
+      description: 'Una app móvil para seguimiento de hábitos saludables.'
     },
     {
       title: 'Sistema de Reservas',
-      img: 'assets/images/project-4.jpg',
       cssClass: 'reservas',
       tags: ['Vue.js', 'Laravel', 'MySQL'],
       developer: 'Victoria Elliott',
+      description: 'Una aplicación web para gestionar reservas en restaurantes.'
     },
   ];
 }
