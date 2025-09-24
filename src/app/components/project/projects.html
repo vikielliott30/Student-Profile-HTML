@@ -1,0 +1,49 @@
+<main class="container">
+  <section class="projects-section" id="proyectos" aria-labelledby="titulo-proyectos">
+    <h2 id="titulo-proyectos" class="section-title">Proyectos Destacados</h2>
+    
+    <div class="projects-grid">
+      @for (project of projectsStudent1; track project.title) {
+        <article class="project-card">
+          <img 
+            [src]="project.img" 
+            [alt]="'Imagen de vista previa del proyecto ' + project.title" 
+            class="project-img">
+          <div class="project-content">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.developer }}</p>
+            <div class="project-tags">
+              @for (tag of project.tags; track $index) {
+                <span class="project-tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+      
+      @for (project of projectsStudent2; track project.title) {
+        <article class="project-card">
+          <img 
+            [src]="project.img" 
+            [alt]="'Imagen de vista previa del proyecto ' + project.title" 
+            class="project-img">
+          <div class="project-content">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.developer }}</p>
+            <div class="project-tags">
+              @for (tag of project.tags; track $index) {
+                <span class="project-tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+
+      @if (!projectsStudent1.length && !projectsStudent2.length) {
+        <div class="no-projects">
+          <p>No hay proyectos cargados en este momento.</p>
+        </div>
+      }
+    </div>
+  </section>
+</main>

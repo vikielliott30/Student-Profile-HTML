@@ -8,8 +8,8 @@
     <nav aria-label="Principal">
       <ul>
         <!-- Enlaces con fragment a secciones del home -->
-        <li><a [routerLink]="['/']" fragment="datos-personales">Datos personales</a></li>
-        <li><a [routerLink]="['/']" fragment="proyectos">Proyectos</a></li>
+        <li><a [routerLink]="'/'">Datos personales</a></li>
+        <li><a [routerLink]="'/proyectos'">Proyectos</a></li>
         <!-- Ruta aparte -->
         @if (auth.isLoggedIn()) {
           <li>

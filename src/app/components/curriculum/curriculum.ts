@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { ProjectsGrid } from './projects-grid';
+// curriculum.ts
 
-// Actualiza el tipo Project para que coincida con la nueva estructura del HTML
+import { Component } from '@angular/core';
+
+// Asegúrate de que este tipo Project esté en el mismo archivo
 type Project = {
   title: string;
   img: string;
@@ -13,7 +14,6 @@ type Project = {
 @Component({
   selector: 'app-curriculum',
   standalone: true,
-  //imports: [ProjectsGrid],
   templateUrl: './curriculum.html',
   styleUrl: './curriculum.scss',
 })
@@ -37,39 +37,6 @@ export class Curriculum {
     github: 'vikielliot30',
   };
 
-  // Se ha actualizado la estructura de los proyectos
-  projectsStudent1: Project[] = [
-    {
-      title: 'Sistema de Gestión de Hoteles',
-      img: 'assets/images/project-1.jpg',
-      cssClass: 'gestion-hoteles',
-      tags: ['Angular', 'Node.js', 'MongoDB'],
-      developer: 'Leonardo Morabito',
-    },
-    {
-      title: 'Plataforma E-commerce',
-      img: 'assets/images/project-2.jpg',
-      cssClass: 'ecommerce',
-      tags: ['React', 'Express', 'PostgreSQL'],
-      developer: 'Leonardo Morabito',
-    },
-  ];
-
-  projectsStudent2: Project[] = [
-    {
-      title: 'Aplicación de Bienestar',
-      img: 'assets/images/project-3.jpg',
-      cssClass: 'bienestar',
-      tags: ['React Native', 'Firebase'],
-      developer: 'Victoria Elliott',
-    },
-    {
-      title: 'Sistema de Reservas',
-      img: 'assets/images/project-4.jpg',
-      cssClass: 'reservas',
-      tags: ['Vue.js', 'Laravel', 'MySQL'],
-      developer: 'Victoria Elliott',
-    },
-  ];
-
+  // Datos completos para cada proyecto, incluyendo tags y developer
+  
 }
