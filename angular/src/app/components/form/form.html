@@ -1,97 +1,66 @@
-<section class="contactForm" aria-labelledby="titulo-contacto">
-  <h2 id="titulo-contacto">Formulario de contacto</h2>
-
-  @if (sent) {
-    <div class="success" role="status">¡Gracias! Tu mensaje fue enviado.</div>
-  }
-
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-    <!-- Nombre -->
-    <div class="field">
-      <label for="name">Nombre</label>
-      <input
-        #nameInput
-        id="name"
-        type="text"
-        formControlName="name"
-        placeholder="Tu nombre"
-        autocomplete="name"
-        [class.is-invalid]="fieldInvalid('name')"
-        [attr.aria-invalid]="fieldInvalid('name')"
-        [attr.aria-describedby]="fieldInvalid('name') ? 'err-name' : null"
-      />
-      @if (fieldInvalid('name')) {
-        <div id="err-name" class="alert alert-error bubble" role="alert" aria-live="assertive">
-          <span class="alert-icon" aria-hidden="true">⚠️</span>
-          <span>Debe tener entre 3 y 60 letras.</span>
+<div class="container">
+  <p-card>
+    <ng-template pTemplate="title">
+      <div class="title">Formulario de Contacto</div>
+    </ng-template>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form p-fluid" novalidate>
+      <div class="p-formgrid grid">
+        <!-- Full Name -->
+        <div class="p-field field col-12 md:col-6">
+          <label for="fullName">Nombre Completo</label>
+          <input id="fullName" type="text" pInputText formControlName="fullName" />
+          @if (form.get('fullName')?.touched && form.get('fullName')?.hasError('required')) {
+            <small class="p-error">Name is required</small>
+          }
+          @if (form.get('fullName')?.touched && form.get('fullName')?.hasError('minlength')) {
+            <small class="p-error">Minimum 3 characters</small>
+          }
+          @if (form.get('fullName')?.touched && form.get('fullName')?.hasError('noEmoji')) {
+            <small class="p-error">Emojis are not allowed in the name</small>
+          }
         </div>
-      }
-    </div>
 
-    <!-- Email -->
-    <div class="field">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        formControlName="email"
-        placeholder="tu@email.com"
-        autocomplete="email"
-        [class.is-invalid]="fieldInvalid('email')"
-        [attr.aria-invalid]="fieldInvalid('email')"
-        [attr.aria-describedby]="fieldInvalid('email') ? 'err-email' : null"
-      />
-      @if (fieldInvalid('email')) {
-        <div id="err-email" class="alert alert-error bubble" role="alert" aria-live="assertive">
-          <span class="alert-icon" aria-hidden="true">⚠️</span>
-          <span>Email inválido.</span>
+        <!-- Email -->
+        <div class="p-field field col-12 md:col-6">
+          <label for="email">Email</label>
+          <input id="email" type="email" pInputText formControlName="email" />
+          @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+            <small class="p-error">Email is required</small>
+          }
+          @if (form.get('email')?.touched && form.get('email')?.hasError('email')) {
+            <small class="p-error">Enter a valid email</small>
+          }
         </div>
-      }
-    </div>
 
-    <!-- Motivo -->
-    <div class="field">
-      <label for="subject">Motivo</label>
-      <select
-        id="subject"
-        formControlName="subject"
-        [class.is-invalid]="fieldInvalid('subject')"
-        [attr.aria-invalid]="fieldInvalid('subject')"
-        [attr.aria-describedby]="fieldInvalid('subject') ? 'err-subject' : null"
-      >
-        <option value="" disabled>-- Selecciona un motivo --</option>
-        @for (motivo of motivos; track motivo) {
-          <option [value]="motivo">{{ motivo[0].toUpperCase() + motivo.slice(1) }}</option>
-        }
-      </select>
-      @if (fieldInvalid('subject')) {
-        <div id="err-subject" class="alert alert-error bubble" role="alert" aria-live="assertive">
-          <span class="alert-icon" aria-hidden="true">⚠️</span>
-          <span>Seleccioná un motivo.</span>
+        <!-- Country -->
+        <div class="p-field field col-12 md:col-6">
+          <label for="motivo">Motivo de consulta</label>
+          <p-select inputId="motivo" [options]="motivos" formControlName="motivo" optionLabel="label"></p-select>
+          @if (form.get('motivo')?.touched && form.get('motivo')?.hasError('required')) {
+            <small class="p-error">Motivo is required</small>
+          }
         </div>
-      }
-    </div>
 
-    <!-- Mensaje -->
-    <div class="field">
-      <label for="message">Mensaje</label>
-      <textarea
-        id="message"
-        rows="4"
-        formControlName="message"
-        placeholder="Escribe tu mensaje aquí..."
-        [class.is-invalid]="fieldInvalid('message')"
-        [attr.aria-invalid]="fieldInvalid('message')"
-        [attr.aria-describedby]="fieldInvalid('message') ? 'err-message' : null"
-      ></textarea>
-      @if (fieldInvalid('message')) {
-        <div id="err-message" class="alert alert-error bubble" role="alert" aria-live="assertive">
-          <span class="alert-icon" aria-hidden="true">⚠️</span>
-          <span>Mínimo 10 caracteres.</span>
+        <div class="p-field field col-12 md:col-6">
+          <label for="estudiante">Estudiante elegido</label>
+          <p-select inputId="estudiante" [options]="estudiantes" formControlName="estudiante" optionLabel="label"></p-select>
+          @if (form.get('estudiante')?.touched && form.get('estudiante')?.hasError('required')) {
+            <small class="p-error">Estudiante elegido es requerido</small>
+          }
         </div>
-      }
-    </div>
 
-    <button type="submit" [disabled]="form.invalid || form.pending">Enviar</button>
-  </form>
-</section>
+        <!-- Agree -->
+        <div class="p-field field col-12">
+          <div class="flex align-items-center">
+            <p-checkbox inputId="agree" formControlName="agree" binary="true"></p-checkbox>
+            <label for="agree" class="ml-2">I agree to the terms</label>
+          </div>
+          @if (form.get('agree')?.touched && form.get('agree')?.hasError('requiredTrue')) {
+            <small class="p-error">You must agree before submitting</small>
+          }
+        </div>
+      </div>
+      <p-button type="submit" label="Submit" icon="pi pi-save" [disabled]="form.invalid"></p-button>
+    </form>
+  </p-card>
+</div>
