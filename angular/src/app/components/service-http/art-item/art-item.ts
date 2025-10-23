@@ -1,11 +1,12 @@
 import { Component, input } from '@angular/core';
 import { Artwork } from '../../../models/artwork.model';
-
+import { UpperCasePipe } from '@angular/common';
+  
 @Component({
   selector: 'app-art-item',
-  imports: [],
   templateUrl: './art-item.html',
-  styleUrl: './art-item.scss'
+  styleUrls: ['./art-item.scss'],
+  imports: [UpperCasePipe]
 })
 export class ArtItem {
 
