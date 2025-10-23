@@ -64,13 +64,6 @@ header {
   justify-content: center;
   font-weight: bold;
 }
-.leo-avatar {
-  background-image: url('../../assets/images/leo.jpg');
-}
-
-.victoria-avatar {
-  background-image: url('../../assets/images/miche.jpeg');
-}
 
 /* Estilos para el contenedor del avatar */
 .profile-avatar {
@@ -160,14 +153,24 @@ h1 {
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+
 }
 
-.profile-avatar {
+.profile-avatar-leo-avatar{
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #f1f1f1;
+  background: url('../../assets/images/leo.jpg') center/cover no-repeat ;
+}
+.profile-avatar-victoria-avatar{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f1f1f1;
+  background: url('../../assets/images/miche.jpeg') center/cover no-repeat ;
 }
 
 .profile-info h3 {
