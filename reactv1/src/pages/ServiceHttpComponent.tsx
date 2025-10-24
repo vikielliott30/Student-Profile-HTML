@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { useArtworks } from '../hooks/useArtworks';
 import ArtItem from '../components/ArtItem';
+import './ServiceHttpComponent.scss';
 
 const ServiceHttpComponent: React.FC = () => {
   const { page, maxPages, artworks, isLoading, nextPage, prevPage } = useArtworks();

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Projects.scss';
 
 interface Project {
   title: string;

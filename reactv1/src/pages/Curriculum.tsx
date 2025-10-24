@@ -1,3 +1,5 @@
+import './Curriculum.scss';
+
 import React from 'react';
 import leoImage from '../assets/images/leo.jpg';
 import micheImage from '../assets/images/miche.jpeg';

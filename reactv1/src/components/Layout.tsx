@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-
+import './Layout.scss';
 
 const Layout: React.FC = () => {
   const { isLoggedIn, login, logout } = useAuth();

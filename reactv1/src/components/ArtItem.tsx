@@ -1,4 +1,4 @@
-//import './ArtItem.scss';
+import './ArtItem.scss';
 import React from 'react';
 import type { Artwork } from '../models/artwork.model';
 

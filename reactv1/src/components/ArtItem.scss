@@ -11,10 +11,10 @@
 
   padding: 1rem 1.1rem;
   border-radius: 16px;
-  background: linear-gradient(180deg, $card-bg-top 0%, $card-bg-bottom 100%);
-  color: $dark-text;
-  border: 1px solid $card-border;
-  box-shadow: $card-shadow;
+  background: linear-gradient(180deg, var(--art-card-bg-top, #f8f9fa) 0%, var(--art-card-bg-bottom, #e9ecef) 100%);
+  color: var(--art-dark-text, #343a40);
+  border: 1px solid var(--art-card-border, #dee2e6);
+  box-shadow: var(--art-card-shadow, 0 4px 8px rgba(0, 0, 0, 0.05));
 
   transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 
@@ -29,7 +29,7 @@
 .title {
   margin: 0;
   font-weight: 700;
-  font-size: var(--fs-h3);
+  font-size: var(--fs-h3, 1.25rem);
   line-height: 1.5;
   white-space: normal;
 }
@@ -40,9 +40,9 @@
   flex: 1 1 auto;     /* ocupa el resto de la card */
   overflow: auto;     /* SOLO la descripción scrollea */
   text-align: left;
-  font-size: var(--fs-h3);
+  font-size: var(--fs-h3, 1rem);
   line-height: 1.5;
-  color: mix($dark-text, $light-gray, 60%);
+  color: var(--muted, #6b7280);
 
   /* scrollbars sutiles */
   scrollbar-width: thin;

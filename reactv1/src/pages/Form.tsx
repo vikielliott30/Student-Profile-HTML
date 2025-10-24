@@ -1,3 +1,4 @@
+import './Form.scss';
 import React, { useState } from 'react';
 
 const motivos = ['consulta', 'soporte', 'presupuesto'];
