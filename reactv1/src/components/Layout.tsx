@@ -19,8 +19,8 @@ const Layout: React.FC = () => {
       <header>
         <div className="topbar">
           <div className="principalDiv">
-            <span className="logo" aria-hidden="true"></span>
-            <strong>CV</strong>
+            <div className="logo" aria-hidden="true"><strong>CV</strong></div>
+            
           </div>
 
           <nav aria-label="Principal">

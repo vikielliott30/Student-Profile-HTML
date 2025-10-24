@@ -60,7 +60,7 @@ const Form: React.FC = () => {
 
   return (
     <section className="contactForm" aria-labelledby="titulo-contacto">
-      <h2 id="titulo-contacto">Formulario de contacto</h2>
+      <div className='div-titulo-contacto'> <h2 id="titulo-contacto">Formulario de contacto</h2></div>
       {sent && (
         <div className="success" role="status">¡Gracias! Tu mensaje fue enviado.</div>
       )}

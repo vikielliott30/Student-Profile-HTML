@@ -9,7 +9,7 @@ const Curriculum: React.FC = () => {
   const Student1 = {
     name: 'Leonardo Morabito',
     avatar: leoImage,
-    role: 'Estudiante de Ingeniería en Sistemas',
+    role: 'Estudiante de Ingeniería de Sistemas',
     email: 'leonardomorabito02@gmail.com',
     tel: '+54 9 351 394 1076',
     github: 'leomorabito02',
@@ -18,7 +18,7 @@ const Curriculum: React.FC = () => {
   const Student2 = {
     name: 'Victoria Elliott',
     avatar: micheImage,
-    role: 'Estudiante de Ingeniería en Sistemas',
+    role: 'Estudiante de Ingeniería de Sistemas',
     email: 'vikielliott30@gmail.com',
     tel: '+54 9 3521 43-9947',
     github: 'vikielliott30',
